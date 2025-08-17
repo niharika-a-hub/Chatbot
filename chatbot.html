@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple ChatBot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f9;
+      text-align: center;
+      padding: 30px;
+    }
+    h2 {
+      color: #003366;
+    }
+    #chat-box {
+      width: 400px;
+      height: 400px;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      background: white;
+      overflow-y: auto;
+      text-align: left;
+    }
+    .user { color: blue; }
+    .bot { color: green; }
+    input[type=text] {
+      padding: 10px;
+      width: 250px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 15px;
+      background: #003366;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0055aa;
+    }
+  </style>
+</head>
+<body>
+  <h2>Simple ChatBot</h2>
+  <div id="chat-box"></div>
+  <br>
+  <input type="text" id="userInput" placeholder="Type your message...">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    function sendMessage() {
+      let input = document.getElementById("userInput").value;
+      let chatBox = document.getElementById("chat-box");
+
+      // Display user message
+      chatBox.innerHTML += "<p class='user'><b>You:</b> " + input + "</p>";
+
+      // Simple chatbot logic
+      let reply = "";
+      input = input.toLowerCase();
+
+      if (input.includes("hello") || input.includes("hi")) {
+        reply = "Hi! How can I help you today?";
+      } else if (input.includes("name")) {
+        reply = "I am a chatbot created using JavaScript!";
+      } else if (input.includes("services")) {
+        reply = "We offer software development, AI, and eCommerce solutions.";
+      } else if (input.includes("bye")) {
+        reply = "Goodbye! Have a great day!";
+      } else {
+        reply = "Sorry, I didn’t understand that.";
+      }
+
+      // Display bot reply
+      chatBox.innerHTML += "<p class='bot'><b>Bot:</b> " + reply + "</p>";
+
+      // Scroll to bottom
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      // Clear input
+      document.getElementById("userInput").value = "";
+    }
+  </script>
+</body>
+</html>
